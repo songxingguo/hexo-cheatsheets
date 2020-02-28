@@ -5,12 +5,21 @@
       </div>
 
       <div class='actions'>
-          <ul class='page-actions'>
-            <li class='link github -button hint--bottom' data-hint='<%= theme.githubToolTip %>'>
-              <a href='<%= theme.github %>'>
-                <span class='text -visible'><%= theme.githubToolTip %></span>
-              </a>
-            </li>
+          <ul class='page-actions flex-row'>
+              <% if (theme.yuque && page.slug){ %>
+                  <li class='link yuque -button hint--bottom' data-hint='<%= theme.yuqueToolTip %>'>
+                      <a href='<%= [theme.yuque,page.slug,'edit'].join('/') %>'>
+                          <span class='text -visible'><%= theme.yuqueToolTip %></span>
+                      </a>
+                  </li>
+              <% } %>
+             <% if (!page.slug || !theme.yuque){ %>
+                <li class='link github -button hint--bottom' data-hint='<%= theme.githubToolTip %>'>
+                  <a href='<%= theme.github %>'>
+                    <span class='text -visible'><%= theme.githubToolTip %></span>
+                  </a>
+                </li>
+             <% } %>
           </ul>
       </div>
   </div>
